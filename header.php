@@ -25,6 +25,8 @@ while ($pagesWidget->next()) {
         'permalink' => $pagesWidget->permalink,
     ];
 }
+$showFloatingToolbar = ($this->is('post') && (string)md3e_opt($this->options, 'showFloatingToolbar') === '1');
+$bodyClass = $showFloatingToolbar ? 'has-reading-toolbar' : '';
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN"
@@ -83,7 +85,7 @@ while ($pagesWidget->next()) {
     <?php endif; ?>
     <?php $this->header(); ?>
 </head>
-<body>
+<body<?php echo $bodyClass !== '' ? ' class="' . md3e_e($bodyClass) . '"' : ''; ?>>
 
 <!-- Material 3 Expressive 6-Shape Organic ClipPath Library -->
 <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
@@ -196,6 +198,11 @@ while ($pagesWidget->next()) {
                     <span><?php $this->options->title(); ?></span>
                 </a>
                 <div style="display:flex;gap:8px;">
+                    <?php if ($allowVisitorPalette): ?>
+                        <button type="button" class="md-rail-icon-btn" data-toggle-palette aria-expanded="false" aria-controls="md-palette-sheet" aria-label="<?php _e('切换动态配色'); ?>">
+                            <?php echo md3e_icon('palette'); ?>
+                        </button>
+                    <?php endif; ?>
                     <button type="button" class="md-rail-icon-btn" data-theme-toggle aria-label="<?php _e('切换深浅色'); ?>">
                         <span class="icon-sun" style="display:none;"><?php echo md3e_icon('sun'); ?></span>
                         <span class="icon-moon"><?php echo md3e_icon('moon'); ?></span>

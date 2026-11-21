@@ -149,6 +149,9 @@ $firstCat = !empty($categories) ? $categories[0] : null;
 
 <?php if ($showToolbar): ?>
 <div class="md-floating-toolbar" role="toolbar" aria-label="<?php _e('阅读工具栏'); ?>">
+    <a class="md-toolbar-btn md-toolbar-home" href="<?php $this->options->siteUrl(); ?>" title="<?php _e('返回文章列表'); ?>" aria-label="<?php _e('返回文章列表'); ?>">
+        <?php echo md3e_icon('home'); ?>
+    </a>
     <button type="button" class="md-toolbar-btn" data-font-scale title="<?php _e('切换正文字号'); ?>">
         <?php echo md3e_icon('text-size'); ?>
         <span data-font-label>标准</span>

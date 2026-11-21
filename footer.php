@@ -43,6 +43,10 @@ while ($dockWidget->next()) {
     </div><!-- .md-stage -->
 </div><!-- .md-app-shell -->
 
+<?php
+$mobileDockCount = 1 + min(2, count($dockPages)) + ($allowVisitorPalette ? 1 : 0);
+if ($mobileDockCount >= 2):
+?>
 <!-- Mobile Floating MD3E Navigation Dock -->
 <nav class="md-mobile-dock" aria-label="<?php _e('移动底部导航'); ?>">
     <a class="md-dock-item<?php if ($this->is('index') || $this->is('post') || $this->is('archive')): ?> is-active<?php endif; ?>" href="<?php $this->options->siteUrl(); ?>">
@@ -61,6 +65,7 @@ while ($dockWidget->next()) {
         </button>
     <?php endif; ?>
 </nav>
+<?php endif; ?>
 
 <?php if ($allowVisitorPalette): ?>
 <!-- Dynamic MD3E Color Seed Palette Sheet -->
